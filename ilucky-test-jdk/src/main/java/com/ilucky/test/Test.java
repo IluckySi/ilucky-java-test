@@ -1,5 +1,7 @@
 package com.ilucky.test;
 
+import java.util.Map;
+
 /**
  * 注意: &&和&的区别
  * @author IluckySi
@@ -8,6 +10,11 @@ package com.ilucky.test;
 public class Test {
 
 	public static void main(String[] args) {
+	    Map<Thread, StackTraceElement[]> map = Thread.currentThread().getAllStackTraces();
+	    
+	    Thread.currentThread().dumpStack();
+	   // Thread.currentThread().
+	    
 		if(a() || b()) { // if(a() | b()) {
 			System.out.println("--a() && b()--");
 		}

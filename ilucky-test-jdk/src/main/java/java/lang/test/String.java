@@ -1,4 +1,4 @@
-package java.lang;
+package java.lang.test;
 
 //public class String {
 //

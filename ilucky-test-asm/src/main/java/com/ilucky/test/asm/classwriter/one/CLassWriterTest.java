@@ -59,6 +59,7 @@ public class CLassWriterTest extends ClassLoader implements Opcodes {
 	    mv.visitInsn(IADD);   
 	    mv.visitInsn(IRETURN); 
 	    // Visits the maximum stack size and the maximum number of local variables of the method.
+	    // 操作数栈size是2, 变量表size是3(this, a, b)
 	    mv.visitMaxs(2, 3);  
 	    // Visits the end of the method. This method, which is the last one to be called,
 	    // is used to inform the visitor that all the annotations and attributes of the method have been visited.

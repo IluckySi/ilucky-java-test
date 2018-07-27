@@ -42,6 +42,12 @@ public class ConnectionPool {
 				long future = System.currentTimeMillis() + mills;
 				long remaining = mills;
 				while(pool.isEmpty() && remaining > 0) {
+				    // 注意: 这里一直困扰的一个问题？ 是不是线程等待remaining时间之后, 才会去尝试获取数据库连接呢?
+				    // 不是的, 即如果remaining=3秒. 可能的情况有如下两种:
+				    // 1. 等了1秒之后, 有线程releaseConnection了, 即pool.notifyAll了, 此时当前线程试着获取锁,
+				    // 如果能拿到继续判断pool是不是空的,如果是空的(说明其他线程获取了锁,并获取了Connection), 
+				    // 再判断时间remaining, 如果依旧大于0, 继续wait; 如果不是空的, 则去pool里面获取Connection
+				    // 2. 等了3秒之后, 不再继续等待
 					pool.wait(remaining);
 					remaining = future - System.currentTimeMillis();
 				}

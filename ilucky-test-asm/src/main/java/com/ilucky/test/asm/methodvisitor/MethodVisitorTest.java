@@ -6,7 +6,7 @@ package com.ilucky.test.asm.methodvisitor;
  * 
  * java虚拟机执行模型:
  * java代码是线程内部执行的，每个线程都有自己的执行栈，栈由帧组成，每个帧表示一个方法调用。
- * 每次调用一个方法时，会将一个新帧压入当前线程的执行栈;当方法返回时，或者是因为异常返回，
+ * 每次调用一个方法时，会将一个新帧压入当前线程的执行栈; 当方法返回时，或者是因为异常返回，
  * 会将这个帧从栈中弹出。
  * 每个帧包含两部分:一个局部变量表和一个操作数栈部分。
  * 局部变量表包含可根据索引以随机顺序访问的变量。
@@ -85,10 +85,10 @@ public class MethodVisitorTest {
     * 
    public getI()I
    L0          
-    LINENUMBER 47 L0
+    LINENUMBER 99 L0 // 代表source文件中第99行
     ALOAD 0    // 加载0局部变量(this)到操作数栈
-    GETFIELD com/ilucky/test/asm/methodvisitor/MethodVisitorTest.i : I // GETFIELD ower name desc
-    IRETURN    // 返回整数 
+    GETFIELD com/ilucky/test/asm/methodvisitor/MethodVisitorTest.i : I // GETFIELD ower name desc: 将栈顶的对象this的i变量压入到操作数栈中
+    IRETURN    // 返回整数: 返回操作数栈顶的值 
    L1        
     LOCALVARIABLE this Lcom/ilucky/test/asm/methodvisitor/MethodVisitorTest; L0 L1 0
     MAXSTACK = 1   // 代表了操作数栈深度的最大值
@@ -104,12 +104,12 @@ public class MethodVisitorTest {
     * 
    public setI(I)V
    L0      
-    LINENUMBER 63 L0
+    LINENUMBER 122 L0 // 代表source文件中的第122行
     ALOAD 0 // 加载0局部变量(this)到操作数栈
     ILOAD 1 // 加载1局部变量(i)到操作数栈
-    PUTFIELD com/ilucky/test/asm/methodvisitor/MethodVisitorTest.i : I // PUTFIELD ower name desc
+    PUTFIELD com/ilucky/test/asm/methodvisitor/MethodVisitorTest.i : I // PUTFIELD ower name desc: 弹出操作数占中i对应的值, 再弹出操作数栈中的this, 将i对应的值赋给this.i
    L1
-    LINENUMBER 64 L1
+    LINENUMBER 123 L1
     RETURN // 结束
    L2
     LOCALVARIABLE this Lcom/ilucky/test/asm/methodvisitor/MethodVisitorTest; L0 L2 0
@@ -129,7 +129,7 @@ public class MethodVisitorTest {
    L0
     LINENUMBER 99 L0
     ILOAD 0    // 加载0局部变量(j, 注意:静态方法中没有this)到操作数栈
-    PUTSTATIC com/ilucky/test/asm/methodvisitor/MethodVisitorTest.j : I // PUTSTATIC ower name desc
+    PUTSTATIC com/ilucky/test/asm/methodvisitor/MethodVisitorTest.j : I // PUTSTATIC ower name desc: 弹出操作数栈中j的值, 再弹出操作数栈中的this, 将j对应的值赋给this.j
    L1
     LINENUMBER 100 L1
     RETURN    // 结束
@@ -177,7 +177,7 @@ public class MethodVisitorTest {
    L0
     LINENUMBER 190 L0
     NEW com/ilucky/test/asm/methodvisitor/User  // 创建对象
-    DUP                                         // 将对象的一个副本压入操作数栈
+    DUP                                         // 将对象的一个副本压入操作数栈(注意: NEW和DUP是组合使用的),这句话的意思不是操作数栈中有两个这个对象,只是有一个
     LDC "IluckySi"                              // 压入操作数栈一个变量
     LDC "123"                                   // 压入操作数栈一个变量
     INVOKESPECIAL com/ilucky/test/asm/methodvisitor/User.<init> (Ljava/lang/String;Ljava/lang/String;)V // 调用构造器,将返回结果放到操作数栈
@@ -191,9 +191,9 @@ public class MethodVisitorTest {
     ALOAD 2                                     // 加载局部变量表中的第三个局部变量到操作数栈
     ARETURN                                     // 返回操作数栈中的值
    L3
-    LOCALVARIABLE this Lcom/ilucky/test/asm/methodvisitor/MethodVisitorTest; L0 L3 0 
-    LOCALVARIABLE u Lcom/ilucky/test/asm/methodvisitor/User; L1 L3 1
-    LOCALVARIABLE copy Lcom/ilucky/test/asm/methodvisitor/User; L2 L3 2
+    LOCALVARIABLE this Lcom/ilucky/test/asm/methodvisitor/MethodVisitorTest; L0 L3 0  // 局部变量
+    LOCALVARIABLE u Lcom/ilucky/test/asm/methodvisitor/User; L1 L3 1                  // 局部变量
+    LOCALVARIABLE copy Lcom/ilucky/test/asm/methodvisitor/User; L2 L3 2               // 局部变量
     MAXSTACK = 4  // 代表了操作数栈深度的最大值
     MAXLOCALS = 3 // 代表了局部变量表所需最大空间
     * @return
@@ -214,13 +214,13 @@ public class MethodVisitorTest {
    L0
     LINENUMBER 200 L0
     LLOAD 1    // 加载局部变量表中的第二个局部变量到操作数栈,因为第一个是this
-    L2I        // 将操作数栈中的值由long类型转换为int类型
-    ISTORE 3   // 并将转换后的值保存到局部变量表第四个位置,注意: 第一个位置是this,第二个第三个位置是j(因为是long类型,所以占用两个槽位)
+    L2I        // 将操作数栈中的值由long类型转换为int类型, 并压入到操作数栈中
+    ISTORE 3   // 弹出操作数栈中的值,保存到局部变量表第四个位置,注意: 第一个位置是this,第二个第三个位置是j(因为是long类型,所以占用两个槽位)
    L1
     LINENUMBER 201 L1
     ILOAD 3    // 加载局部变量表第四个位置的变量到操作数栈
     ICONST_2   // 向操作数栈压入常量2
-    IF_ICMPLE L2 // 弹出操作数栈中的值,如果 ${ILOAD 3} > ${ICONST_2},跳到L2, IF_ICMPLE指令的使用，注意顺序
+    IF_ICMPLE L2 // 弹出操作数栈中的值,如果 ${ILOAD 3} <= ${ICONST_2},跳到L2, IF_ICMPLE指令的使用，注意顺序
    L3
     LINENUMBER 202 L3
     ICONST_1 // 向操作数栈压入常量1
@@ -253,7 +253,7 @@ public class MethodVisitorTest {
    L0
     LINENUMBER 249 L0
     ICONST_2          // 向操作数栈中压入常量2
-    NEWARRAY T_INT    // 创建一个整型数组
+    NEWARRAY T_INT    // 创建一个整型数组, 并压入到操作数栈
     ASTORE 1          // 将整型数组保存到第2个局部变量,因为第一个局部变量是this
    L1
     LINENUMBER 250 L1

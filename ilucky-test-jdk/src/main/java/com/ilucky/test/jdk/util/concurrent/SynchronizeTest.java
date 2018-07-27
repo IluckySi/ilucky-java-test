@@ -46,10 +46,10 @@ class SynchrnizedTest1T2 extends Thread {
 		try {
 			System.out.println("--->" + Thread.currentThread().getName());
 			synchronized(SynchronizeTest.B) {
-				System.out.println("SynchrnizedTest1T2 A");
+				System.out.println("SynchrnizedTest1T2 B");
 				Thread.sleep(1000);
 				synchronized(SynchronizeTest.A) {
-					System.out.println("SynchrnizedTest1T2 B");
+					System.out.println("SynchrnizedTest1T2 A");
 				}
 			}
 		} catch (InterruptedException e) {

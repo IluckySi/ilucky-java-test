@@ -10,7 +10,7 @@ import org.objectweb.asm.Opcodes;
  * 
  * @author IluckySi
  * 
- * javap是jdk自带的反汇编器
+javap是jdk自带的反汇编器
 E:\work\yunzhihui>javap "java/lang/Runnable"
 Compiled from "Runnable.java"
 public interface java.lang.Runnable {

@@ -1,4 +1,7 @@
-package java.lang;
+package java.lang.test;
+
+import java.lang.String;
+import java.lang.System;
 
 public class MyJavaLang {
 

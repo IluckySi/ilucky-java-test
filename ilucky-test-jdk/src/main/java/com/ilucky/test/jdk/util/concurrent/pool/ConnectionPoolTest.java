@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 等待/通知机制.
  * 等待超时模式的应用场景数据库连接池。
  * CountDownLatch在测试中的深入使用。
+ * 
  * @author IluckySi
  *
  */
@@ -44,6 +45,12 @@ public class ConnectionPoolTest {
 		System.out.println("NotGot connection: " + notGot);
 	}
 	
+	/**
+	 * 通过实现Runnable的线程可以共享变量
+	 * 
+	 * @author IluckySi
+	 *
+	 */
 	static class ConnectionRunner implements Runnable {
 		int count;
 		AtomicInteger got;

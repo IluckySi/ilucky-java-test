@@ -5,7 +5,7 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
- * 优先执行: barrierAction
+ * barrierAction的使用
  * 用于在到达线程屏障时,优先执行barrierAction,方便处理更复杂的业务场景.
  * 注意: 优先还是滞后取决于业务在cb.await();哪里, 即先后位置.
  * 
@@ -19,6 +19,11 @@ import java.util.concurrent.CyclicBarrier;
 public class CyclicBarrierTest3 {
 
 	public static void main(String[] args) {
+	    /**
+	     * Parameters:
+            parties the number of threads that must invoke await before the barrier is tripped
+            barrierAction the command to execute when the barrier is tripped, or null if there is no action 
+	     */
 		CyclicBarrier cb = new CyclicBarrier(3, new CyclicBarrierTestT30());
 		new CyclicBarrierTestT31(cb).start();
 		new CyclicBarrierTestT32(cb).start();
