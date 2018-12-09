@@ -27,20 +27,20 @@ public class MethodVisitorTest2 {
      public tryCatchTest()V
     TRYCATCHBLOCK L0 L1 L2 java/lang/Exception
    L0
-    LINENUMBER 29 L0
+    LINENUMBER 53 L0
     LCONST_1
     INVOKESTATIC java/lang/Thread.sleep (J)V
    L1
-    LINENUMBER 30 L1
+    LINENUMBER 54 L1
     GOTO L3
    L2
-    ASTORE 1
+    ASTORE 1                      // 将Exception保存到局部变量表
    L4
-    LINENUMBER 31 L4
-    ALOAD 1
+    LINENUMBER 55 L4
+    ALOAD 1                       
     INVOKEVIRTUAL java/lang/Exception.printStackTrace ()V
    L3
-    LINENUMBER 33 L3
+    LINENUMBER 57 L3
     RETURN
    L5
     LOCALVARIABLE this Lcom/ilucky/test/asm/methodvisitor/MethodVisitorTest2; L0 L5 0
@@ -105,5 +105,81 @@ public class MethodVisitorTest2 {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    /**
+     * 证明LOAD后面不是index,而是开始槽位
+     * 
+     * @param i1
+     * @param i2
+     * @param i3
+     * @param i4
+     * @return
+public manyInt(IIII)I
+   L0
+    LINENUMBER 112 L0
+    ILOAD 1
+    ILOAD 2
+    IADD
+    ILOAD 3
+    IADD
+    ILOAD 4
+    IADD
+    ISTORE 5
+   L1
+    LINENUMBER 113 L1
+    ILOAD 5
+    IRETURN
+   L2
+    LOCALVARIABLE this Lcom/ilucky/test/asm/methodvisitor/MethodVisitorTest2; L0 L2 0
+    LOCALVARIABLE i1 I L0 L2 1
+    LOCALVARIABLE i2 I L0 L2 2
+    LOCALVARIABLE i3 I L0 L2 3
+    LOCALVARIABLE i4 I L0 L2 4
+    LOCALVARIABLE i I L1 L2 5
+    MAXSTACK = 2
+    MAXLOCALS = 6
+
+     */
+    public int manyInt(int i1, int i2, int i3, int i4) {
+        int i = i1 + i2 + i3 + i4;
+        return i;
+    }
+    
+    /**
+     * 证明LOAD后面不是index,而是开始槽位
+     * 
+     * @param l1
+     * @param l2
+     * @return
+     * 
+ public manyLong(JJJJ)J
+   L0
+    LINENUMBER 137 L0
+    LLOAD 1
+    LLOAD 3
+    LADD
+    LLOAD 5
+    LADD
+    LLOAD 7
+    LADD
+    LSTORE 9
+   L1
+    LINENUMBER 138 L1
+    LLOAD 9
+    LRETURN
+   L2
+    LOCALVARIABLE this Lcom/ilucky/test/asm/methodvisitor/MethodVisitorTest2; L0 L2 0
+    LOCALVARIABLE l1 J L0 L2 1
+    LOCALVARIABLE l2 J L0 L2 3
+    LOCALVARIABLE l3 J L0 L2 5
+    LOCALVARIABLE l4 J L0 L2 7
+    LOCALVARIABLE l J L1 L2 9
+    MAXSTACK = 4
+    MAXLOCALS = 11
+     */
+    public long manyLong(long l1, long l2, long l3, long l4) {
+        long l = l1 + l2 + l3 + l4;
+        return l;
     }
 }

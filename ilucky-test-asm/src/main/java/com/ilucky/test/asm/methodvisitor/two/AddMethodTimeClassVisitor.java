@@ -26,7 +26,20 @@ public class AddMethodTimeClassVisitor extends ClassVisitor implements Opcodes {
         this.owner = name;
     }
 
+// 注意: 针对Monitor类,不会过这里,因为Monitor类没有Field, 只有有Field, 才会visit   
+//    public FieldVisitor visitField(int access, String name, String desc,
+//            String signature, Object value) {
+//        System.out.println("=========FieldVisitor============");
+//        FieldVisitor fv = null;
+//        if (cv != null) {
+//            fv = cv.visitField(ACC_PUBLIC + ACC_STATIC, "timer", "J", null, null);
+//            fv.visitEnd();
+//        }
+//        return fv;
+//    }
+    
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
+        System.out.println("=========MethodVisitor============");
         MethodVisitor mv = cv.visitMethod(access, name, desc, signature, exceptions);
 
         // 排除接口和非接口的构造方法

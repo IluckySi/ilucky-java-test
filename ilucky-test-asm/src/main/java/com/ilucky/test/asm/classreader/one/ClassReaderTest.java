@@ -33,6 +33,9 @@ public class ClassReaderTest {
 			// Makes the given visitor visit the Java class of this ClassReader. 
 			// 这个类是构造函数中指定的类
 			// This class is the one specified in the constructor (see ClassReader).
+			// Parameters:
+			//    classVisitor the visitor that must visit this class.
+			//    flags option flags that can be used to modify the default behavior of this class. See SKIP_DEBUG, EXPAND_FRAMES , SKIP_FRAMES, SKIP_CODE.
 			cr.accept(cpv, 0);
 		} catch (Exception e) {
 			e.printStackTrace();

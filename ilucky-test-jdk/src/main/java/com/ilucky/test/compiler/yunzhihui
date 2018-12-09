@@ -1,0 +1,62 @@
+  public static void testBody(Object req, AgentInstance instance) {
+        try {
+            log.debug("======> body parse req = %s", req);
+            String body = "{\"name\":\"IluckySi\"}";
+            test(body, instance);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // 编译一个类 & 加入到classpath里面
+    public static void test(String body, AgentInstance instance) {
+        
+        // 根据body内容，或者sourceCode生成一个标识，而不是每次都生成class文件
+        StringBuffer sourceCode = new StringBuffer();
+        sourceCode.append("import java.util.Map;").append("\r\n")
+                // .append("import com.alibaba.fastjson.JSON;").append("\r\n")
+                .append("public class Temp {").append("\r\n")
+                .append("public static Object parse(String body) {").append("\r\n")
+                .append("Map<String, Object> map = com.cloudwise.agent.deps.com.alibaba.fastjson.JSON.parseObject(body);").append("\r\n")
+                .append("return map.get(\"name\");").append("\r\n")
+                .append("}").append("\r\n")
+                .append("}");
+        try {
+            
+            // /opt/tomcat/apache-tomcat-7.0.73/bin/bootstrap.jar:/opt/tomcat/apache-tomcat-7.0.73/bin/tomcat-juli.jar:/opt/jbossend2end/JavaAgent_2.2.2/lib/CAgent-1.0.0.jar
+            
+//            log.debug("============>class.path %s", System.getProperty("java.class.path"));
+//            System.setProperty("java.class.path", System.getProperty("java.class.path") + ":/opt/tomcat/apache-tomcat-7.0.73/bin/Temp.class");
+//            log.debug("============>class.path2 %s", System.getProperty("java.class.path"));
+            File javaFile = new File("/opt", "Temp.java");
+            PrintWriter writer = new PrintWriter(new FileWriter(javaFile));
+            writer.write(sourceCode.toString());
+            writer.flush();
+            writer.close();
+
+           
+            // File distDir = new File(System.getProperty("java.class.path").split(";")[0]);
+            File distDir = new File(System.getProperty("user.dir"));
+            // File distDir = new File("D:\\core\\git2018\\ilucky-java-test\\ilucky-test-jdk\\target\\classes");
+            if (distDir.exists()) {
+                distDir.delete();
+            }
+            distDir.mkdirs();
+            // 获取JavaCompiler
+            JavaCompiler javac = ToolProvider.getSystemJavaCompiler();
+            int compileResult = javac.run(null, null, null, "-d", distDir.getAbsolutePath(), javaFile.getAbsolutePath());
+            if(compileResult != 0) {
+                System.err.println("编译失败!!");
+                return;
+            }
+            // Class klass = instance.getLoader().loadClass("Temp");
+            Class klass = Thread.currentThread().getContextClassLoader().loadClass("Temp");
+            // Class klass = Class.forName("Temp");
+            Method evalMethod = klass.getMethod("parse", String.class);
+            String result = (String)evalMethod.invoke(klass.newInstance(), body);
+            log.debug("======> body parse result = %s", result);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }

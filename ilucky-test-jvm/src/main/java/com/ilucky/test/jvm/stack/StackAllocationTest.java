@@ -16,10 +16,10 @@ public class StackAllocationTest {
 		System.out.println("======>"+(end - start));
 	}
 	
-	static User u = null;
+	// static User u = null;
 	public static void alloc() {
-		// User u = new User();
-		u = new User();
+	    // u = new User();
+		User u = new User();
 		u.username = "IluckySi";
 		u.password="321";
 	}

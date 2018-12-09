@@ -1,0 +1,239 @@
+
+D:\core\git2018\ilucky-java-test\ilucky-test-asm\target\classes\com\ilucky\test\asm\bytecode\javap>javap -v TestDate.class
+Classfile /D:/core/git2018/ilucky-java-test/ilucky-test-asm/target/classes/com/ilucky/test/asm/bytecode/javap/TestDate.class
+  Last modified 2018-8-6; size 1499 bytes
+  MD5 checksum 42787cdaf506c2b38645e4eaa91e5059
+  Compiled from "TestDate.java"
+public class com.ilucky.test.asm.bytecode.javap.TestDate
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Class              #2             // com/ilucky/test/asm/bytecode/javap/TestDate
+   #2 = Utf8               com/ilucky/test/asm/bytecode/javap/TestDate
+   #3 = Class              #4             // java/lang/Object
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               count
+   #6 = Utf8               I
+   #7 = Utf8               <init>
+   #8 = Utf8               ()V
+   #9 = Utf8               Code
+  #10 = Methodref          #3.#11         // java/lang/Object."<init>":()V
+  #11 = NameAndType        #7:#8          // "<init>":()V
+  #12 = Fieldref           #1.#13         // com/ilucky/test/asm/bytecode/javap/TestDate.count:I
+  #13 = NameAndType        #5:#6          // count:I
+  #14 = Utf8               LineNumberTable
+  #15 = Utf8               LocalVariableTable
+  #16 = Utf8               this
+  #17 = Utf8               Lcom/ilucky/test/asm/bytecode/javap/TestDate;
+  #18 = Utf8               main
+  #19 = Utf8               ([Ljava/lang/String;)V
+  #20 = Methodref          #1.#11         // com/ilucky/test/asm/bytecode/javap/TestDate."<init>":()V
+  #21 = Methodref          #1.#22         // com/ilucky/test/asm/bytecode/javap/TestDate.test1:()V
+  #22 = NameAndType        #23:#8         // test1:()V
+  #23 = Utf8               test1
+  #24 = Utf8               args
+  #25 = Utf8               [Ljava/lang/String;
+  #26 = Utf8               testDate
+  #27 = Class              #28            // java/util/Date
+  #28 = Utf8               java/util/Date
+  #29 = Methodref          #27.#11        // java/util/Date."<init>":()V
+  #30 = String             #31            // wangerbei
+  #31 = Utf8               wangerbei
+  #32 = Methodref          #1.#33         // com/ilucky/test/asm/bytecode/javap/TestDate.test2:(Ljava/util/Date;Ljava/lang/String;)V
+  #33 = NameAndType        #34:#35        // test2:(Ljava/util/Date;Ljava/lang/String;)V
+  #34 = Utf8               test2
+  #35 = Utf8               (Ljava/util/Date;Ljava/lang/String;)V
+  #36 = Fieldref           #37.#39        // java/lang/System.out:Ljava/io/PrintStream;
+  #37 = Class              #38            // java/lang/System
+  #38 = Utf8               java/lang/System
+  #39 = NameAndType        #40:#41        // out:Ljava/io/PrintStream;
+  #40 = Utf8               out
+  #41 = Utf8               Ljava/io/PrintStream;
+  #42 = Class              #43            // java/lang/StringBuilder
+  #43 = Utf8               java/lang/StringBuilder
+  #44 = Methodref          #42.#11        // java/lang/StringBuilder."<init>":()V
+  #45 = Methodref          #42.#46        // java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+  #46 = NameAndType        #47:#48        // append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+  #47 = Utf8               append
+  #48 = Utf8               (Ljava/lang/Object;)Ljava/lang/StringBuilder;
+  #49 = Methodref          #42.#50        // java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #50 = NameAndType        #47:#51        // append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #51 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #52 = Methodref          #42.#53        // java/lang/StringBuilder.toString:()Ljava/lang/String;
+  #53 = NameAndType        #54:#55        // toString:()Ljava/lang/String;
+  #54 = Utf8               toString
+  #55 = Utf8               ()Ljava/lang/String;
+  #56 = Methodref          #57.#59        // java/io/PrintStream.println:(Ljava/lang/String;)V
+  #57 = Class              #58            // java/io/PrintStream
+  #58 = Utf8               java/io/PrintStream
+  #59 = NameAndType        #60:#61        // println:(Ljava/lang/String;)V
+  #60 = Utf8               println
+  #61 = Utf8               (Ljava/lang/String;)V
+  #62 = Utf8               date
+  #63 = Utf8               Ljava/util/Date;
+  #64 = Utf8               name1
+  #65 = Utf8               Ljava/lang/String;
+  #66 = String             #67            // zhangsan
+  #67 = Utf8               zhangsan
+  #68 = Utf8               dateP
+  #69 = Utf8               name2
+  #70 = Utf8               test3
+  #71 = Utf8               test4
+  #72 = Utf8               a
+  #73 = Utf8               b
+  #74 = Utf8               c
+  #75 = Utf8               SourceFile
+  #76 = Utf8               TestDate.java
+{
+  public com.ilucky.test.asm.bytecode.javap.TestDate();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #10                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_0
+         6: putfield      #12                 // Field count:I
+         9: return
+      LineNumberTable:
+        line 4: 0
+        line 6: 4
+        line 4: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lcom/ilucky/test/asm/bytecode/javap/TestDate;
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: new           #1                  // class com/ilucky/test/asm/bytecode/javap/TestDate
+         3: dup
+         4: invokespecial #20                 // Method "<init>":()V
+         7: astore_1
+         8: aload_1
+         9: invokevirtual #21                 // Method test1:()V
+        12: return
+      LineNumberTable:
+        line 9: 0
+        line 10: 8
+        line 11: 12
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  args   [Ljava/lang/String;
+            8       5     1 testDate   Lcom/ilucky/test/asm/bytecode/javap/TestDate;
+
+  public void test1();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=1
+         0: new           #27                 // class java/util/Date
+         3: dup
+         4: invokespecial #29                 // Method java/util/Date."<init>":()V
+         7: astore_1
+         8: ldc           #30                 // String wangerbei
+        10: astore_2
+        11: aload_0
+        12: aload_1
+        13: aload_2
+        14: invokevirtual #32                 // Method test2:(Ljava/util/Date;Ljava/lang/String;)V
+        17: getstatic     #36                 // Field java/lang/System.out:Ljava/io/PrintStream;
+        20: new           #42                 // class java/lang/StringBuilder
+        23: dup
+        24: invokespecial #44                 // Method java/lang/StringBuilder."<init>":()V
+        27: aload_1
+        28: invokevirtual #45                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+        31: aload_2
+        32: invokevirtual #49                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        35: invokevirtual #52                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        38: invokevirtual #56                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        41: return
+      LineNumberTable:
+        line 14: 0
+        line 15: 8
+        line 16: 11
+        line 17: 17
+        line 18: 41
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      42     0  this   Lcom/ilucky/test/asm/bytecode/javap/TestDate;
+            8      34     1  date   Ljava/util/Date;
+           11      31     2 name1   Ljava/lang/String;
+
+  public void test2(java.util.Date, java.lang.String);
+    descriptor: (Ljava/util/Date;Ljava/lang/String;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=3, args_size=3
+         0: aconst_null
+         1: astore_1
+         2: ldc           #66                 // String zhangsan
+         4: astore_2
+         5: return
+      LineNumberTable:
+        line 21: 0
+        line 22: 2
+        line 23: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/ilucky/test/asm/bytecode/javap/TestDate;
+            0       6     1 dateP   Ljava/util/Date;
+            0       6     2 name2   Ljava/lang/String;
+
+  public void test3();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: dup
+         2: getfield      #12                 // Field count:I
+         5: iconst_1
+         6: iadd
+         7: putfield      #12                 // Field count:I
+        10: return
+      LineNumberTable:
+        line 26: 0
+        line 27: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/ilucky/test/asm/bytecode/javap/TestDate;
+
+  public void test4();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: iconst_0
+         1: istore_1
+         2: iconst_0
+         3: istore_2
+         4: iload_1
+         5: iconst_1
+         6: iadd
+         7: istore_2
+         8: iload_1
+         9: iconst_1
+        10: iadd
+        11: istore_2
+        12: return
+      LineNumberTable:
+        line 30: 0
+        line 32: 2
+        line 33: 4
+        line 35: 8
+        line 36: 12
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lcom/ilucky/test/asm/bytecode/javap/TestDate;
+            2      11     1     a   I
+            4       4     2     b   I
+           12       1     2     c   I
+}
+SourceFile: "TestDate.java"
+
+D:\core\git2018\ilucky-java-test\ilucky-test-asm\target\classes\com\ilucky\test\asm\bytecode\javap>

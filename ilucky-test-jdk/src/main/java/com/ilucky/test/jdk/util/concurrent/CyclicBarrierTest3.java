@@ -7,7 +7,6 @@ import java.util.concurrent.CyclicBarrier;
 /**
  * barrierAction的使用
  * 用于在到达线程屏障时,优先执行barrierAction,方便处理更复杂的业务场景.
- * 注意: 优先还是滞后取决于业务在cb.await();哪里, 即先后位置.
  * 
  * 应用场景:
  * 比如我们用一个Excel保存了用户所有银行流水, 每个Sheet保存一个帐户近一年的每笔银行流水, 现在需要统计用户的日均银行流水,

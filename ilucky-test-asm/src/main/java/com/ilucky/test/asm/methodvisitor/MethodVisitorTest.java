@@ -129,7 +129,7 @@ public class MethodVisitorTest {
    L0
     LINENUMBER 99 L0
     ILOAD 0    // 加载0局部变量(j, 注意:静态方法中没有this)到操作数栈
-    PUTSTATIC com/ilucky/test/asm/methodvisitor/MethodVisitorTest.j : I // PUTSTATIC ower name desc: 弹出操作数栈中j的值, 再弹出操作数栈中的this, 将j对应的值赋给this.j
+    PUTSTATIC com/ilucky/test/asm/methodvisitor/MethodVisitorTest.j : I 
    L1
     LINENUMBER 100 L1
     RETURN    // 结束
@@ -144,7 +144,7 @@ public class MethodVisitorTest {
    }
    
    /**
-    * 静态方法就算两个数的和
+    * 静态方法计算两个数的和
     * 
     public static setSum(II)I
    L0

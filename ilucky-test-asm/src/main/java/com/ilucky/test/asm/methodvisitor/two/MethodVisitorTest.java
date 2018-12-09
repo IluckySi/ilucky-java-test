@@ -9,17 +9,12 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
 
-import sun.misc.IOUtils;
-
 /**
  * visitCode和visitMaxs方法可用于检测该方法的字节码在一个事件序列中的开始与结束，和类的情况一样，
  * visitEnd方法也必须在最后调用，用于检测一个方法在一个序列事件中结束
  * 
  * 为一个方法计算栈映射帧并不是非常容易: 必须计算所有帧，找出与跳转目标相对应的帧，最后压缩剩余帧。
  * 与此类似，为一个方法计算局部变量与操作数栈的大小要容易些，但依然算不上非常容易，所以可以使用asm提供的自动计算
- * 
- * 【计算方法的执行时间】
- * 注意: 除了上面的方式，还可以通过某个类的静态方法，将方法执行时间发出去，从而进行统计
  * 
  * @author IluckySi
  *
@@ -76,6 +71,14 @@ public class MethodVisitorTest extends ClassLoader  implements Opcodes {
     }
 }
 /**
+运行结果:
+=========MethodVisitor============
+=========MethodVisitor============
+---begin
+---end
+---timer=2000
+
+
 生成的class文件如下:
 package com.ilucky.test.asm.methodvisitor.two;
 
