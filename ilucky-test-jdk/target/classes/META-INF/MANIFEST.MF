@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: ilucky-test-jdk
-Implementation-Version: 1.0-SNAPSHOT
-Built-By: IluckySi
-Implementation-Vendor-Id: com.ilucky.test.jdk
-Build-Jdk: 1.8.0_121
-Created-By: Maven Integration for Eclipse
-
