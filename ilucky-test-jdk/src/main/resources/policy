@@ -1,3 +1,0 @@
-grant codeBase "file:D:/*" {
-    permission java.io.FilePermission "d:/ilucky.txt", "read,write";
-};
